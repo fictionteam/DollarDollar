@@ -42,30 +42,19 @@ var DollarDollar, $$;
             var classPattern = /^(?:\s*(<[\w\W]+>)[^>]*|\.([\w-]*))$/;
             //var idPattern = /\#-?[_a-zA-Z]+[_a-zA-Z0-9-]$/;
             var idPattern = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/;
-            //var tagPattern = /\ba\b|\babbr\b|\bacronym\b|\baddress\b|\bapplet\b|\barea\b|\barticle\b|\baside\b|\baudio\b|\bb\b|\bbase\b|\bbasefont\b|\bbdi\b|\bbdo\b|\bbgsound\b|\bbig\b|\bblink\b|\bblockquote\b|\bbody\b|\bbr\b|\bbutton\b|\bcanvas\b|\bcaption\b|\bcenter\b|\bcite\b|\bcode\b|\bcol\b|\bcolgroup\b|\bcontent\b|\bdata\b|\bdatalist\b|\bdd\b|\bdecorator\b|\bdel\b|\bdetails\b|\bdfn\b|\bdialog\b|\bdir\b|\bdiv\b|\bdl\b|\bdt\b|\belement\b|\bem\b|\bembed\b|\bfieldset\b|\bfigcaption\b|\bfigure\b|\bfont\b|\bfooter\b|\bform\b|\bframe\b|\bframeset\b|\bh1\b|\bh2\b|\bh3\b|\bh4\b|\bh5\b|\bh6\b|\bhead\b|\bheader\b|\bhgroup\b|\bhr\b|\bhtml\b|\bi\b|\biframe\b|\bimg\b|\binput\b|\bins\b|\bisindex\b|\bkbd\b|\bkeygen\b|\blabel\b|\blegend\b|\bli\b|\blink\b|\blisting\b|\bmain\b|\bmap\b|\bmark\b|\bmarquee\b|\bmenu\b|\bmenuitem\b|\bmeta\b|\bmeter\b|\bnav\b|\bnobr\b|\bnoframes\b|\bnoscript\b|\bobject\b|\bol\b|\boptgroup\b|\boption\b|\boutput\b|\bp\b|\bparam\b|\bpicture\b|\bplaintext\b|\bpre\b|\bprogress\b|\bq\b|\brp\b|\brt\b|\bruby\b|\bs\b|\bsamp\b|\bscript\b|\bsection\b|\bselect\b|\bshadow\b|\bsmall\b|\bsource\b|\bspacer\b|\bspan\b|\bstrike\b|\bstrong\b|\bstyle\b|\bsub\b|\bsummary\b|\bsup\b|\btable\b|\btbody\b|\btd\b|\btemplate\b|\btextarea\b|\btfoot\b|\bth\b|\bthead\b|\btime\b|\btitle\b|\btr\b|\btrack\b|\btt\b|\bu\b|\bul\b|\bvar\b|\bvideo\b|\bwbr\b|\bxmp\b/;
             if (classPattern.test(selector) && document.getElementsByClassName) {
                 nodes = document.getElementsByClassName(selector.slice(1));
-                console.log('Class!');
-                //console.log(this);
             } else if (idPattern.test(selector)) {
                 nodes = [];
-                //console.log('Id!');
                 nodes.push(document.getElementById(selector.slice(1)));
-                console.log('Id!');
-                //console.log(this);
             }
-            /*
-            else if (tagPattern.test(selector)) {
-                nodes = document.getElementsByTagName(selector);
-                console.log('TagName!');
-            }*/
             else {
                 nodes = document.querySelectorAll(selector);
             }
             this.query = selector;
         } else if (typeof selector === 'object') {
             nodes = selector.length ? selector : [selector];
-        } else if (typeof selector === 'function') {
+        } else {
         	return new $$.ready(selector);
         }
         for (var i = 0; i < nodes.length; i++) {
