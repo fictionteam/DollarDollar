@@ -2,7 +2,7 @@
  * ---------------------------------
  * DollarDollar
  * Author: Mohamad Jahani @Baarande @FictionTeam
- * Mon 29 Sep 2014 12:27:52 AM IRST
+ * Mon 29 Sep 2014 01:35:56 AM IRST
  * ---------------------------------
  */
 
@@ -37,11 +37,7 @@ var DollarDollar, $$;
      */
     DollarDollar = function(selector) {
         var nodes;
-        if (typeof selector === 'object') {
-            nodes = selector.length ? selector : [selector];
-        } else if (typeof selector === 'function') {
-        	return new $$.ready(selector);
-        } else {
+        if (typeof selector === 'string') {
             //var classPattern = /\.-?[_a-zA-Z]+[_a-zA-Z0-9-]$/;
             var classPattern = /^(?:\s*(<[\w\W]+>)[^>]*|\.([\w-]*))$/;
             //var idPattern = /\#-?[_a-zA-Z]+[_a-zA-Z0-9-]$/;
@@ -67,6 +63,10 @@ var DollarDollar, $$;
                 nodes = document.querySelectorAll(selector);
             }
             this.query = selector;
+        } else if (typeof selector === 'object') {
+            nodes = selector.length ? selector : [selector];
+        } else if (typeof selector === 'function') {
+        	return new $$.ready(selector);
         }
         for (var i = 0; i < nodes.length; i++) {
             this[i] = nodes[i];
