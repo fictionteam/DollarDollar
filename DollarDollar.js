@@ -135,7 +135,7 @@ var DollarDollar, $$;
             });
             return this;
         },
-        remove: function() {
+        rm: function() {
             this.each(function() {
                 this.parentNode.removeChild(this);
             });
@@ -318,3 +318,4 @@ var DollarDollar, $$;
 
 
 })();
+
